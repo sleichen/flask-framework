@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, redirect
 import requests
 import pandas as pd
-import matplotlib.pyplot as plt
 from bokeh.plotting import figure, show, output_notebook
 from bokeh.embed import components 
 from datetime import datetime as dt
