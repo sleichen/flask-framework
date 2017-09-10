@@ -28,7 +28,8 @@ def graph():
     session = requests.Session()
     session.mount('http://', requests.adapters.HTTPAdapter(max_retries=3))
     raw_data = session.get(api_url)
-    data_df = pd.DataFrame(columns = raw_data.json()['column_names'], data  = raw_data.json()['data'])
+    data_dic = raw_data.json()
+    data_df = pd.DataFrame(columns = data_dic['column_names'], data  = data_dic['data'])
     data_df.Date = data_df.Date.apply(lambda x: dt.strptime(x, '%Y-%m-%d'))
 
     plot = figure(title='Stock Price Data from Quandle for '+ ticker,
